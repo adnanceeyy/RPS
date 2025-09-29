@@ -1,32 +1,25 @@
 
-        // Loading page script for initial page load
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading-page').classList.add('hidden');
-            }, 2000); // 2-second delay for initial loading page
+            }, 1000);
         });
 
-        // Modified opengame function to show loading page on button click
         function opengame() {
-            // Show loading page
             document.getElementById('loading-page').classList.remove('hidden');
-            document.getElementById('loading-text').textContent = 'Starting Game...'; // Update text for button click
+            document.getElementById('loading-text').textContent = 'Starting Game...';
             
-            // Hide main page elements immediately
             document.getElementById("opbtn").style.display = "none";
             document.getElementById("himage").style.display = "none";
             
-            // Show game page after a short delay
             setTimeout(() => {
                 document.getElementById("offdiv").style.display = "flex";
                 document.getElementById("exlayer").style.display = "block";
-                // Hide loading page
                 document.getElementById('loading-page').classList.add('hidden');
-                // Reset loading text for next use
                 document.getElementById('loading-text').textContent = 'Loading...';
-            }, 1000); // 1-second delay for loading animation
+            }, 1000);
         }
-
+// ================================================================================================
         const choices = ["rock", "paper", "scissor"];
         const choiceToImage = {
             "rock": "rock.png",
@@ -35,40 +28,68 @@
         };
         let humanScore = 0;
         let aiScore = 0;
+        let clickcounts = 0;
 
-        // Event listeners for options
+        function updateClickCount() {
+    clickcounts++;
+    document.getElementById("clickcound").textContent = clickcounts;
+}
+
+
         document.getElementById("rock").addEventListener("click", () => {
             showPlayerChoice("rock");
             playGame("rock");
+            updateClickCount();
         });
         document.getElementById("pepar").addEventListener("click", () => {
             showPlayerChoice("paper");
             playGame("paper");
+            updateClickCount();
         });
         document.getElementById("scissor").addEventListener("click", () => {
             showPlayerChoice("scissor");
             playGame("scissor");
+            updateClickCount();
         });
 
-        // Immediately show player's choice in the big result box on click
+
+        document.addEventListener("keydown", (event) => {
+    if (document.getElementById("offdiv").style.display === "flex") {
+        switch (event.key.toLowerCase()) {
+            case "z":
+                showPlayerChoice("rock");
+                playGame("rock");
+                updateClickCount();
+                break;
+            case "x":
+                showPlayerChoice("paper");
+                playGame("paper");
+                updateClickCount();
+                break;
+            case "v":
+                showPlayerChoice("scissor");
+                playGame("scissor");
+                updateClickCount();
+                break;
+        }
+    }
+});
+
         function showPlayerChoice(playerChoice) {
             document.getElementById("hresult").src = choiceToImage[playerChoice];
-            // Optional: Highlight the selected option image (add a CSS class for styling, e.g., scale or border)
             document.querySelectorAll(".opimages").forEach(img => img.classList.remove("selected"));
             document.getElementById(playerChoice === "paper" ? "pepar" : playerChoice === "scissor" ? "scissor" : "rock").classList.add("selected");
         }
 
         function playGame(playerChoice) {
             const aiChoice = choices[Math.floor(Math.random() * 3)];
-            // AI choice will be shown after a short delay for effect (optional)
             setTimeout(() => {
                 updateAIChoice(aiChoice);
                 const result = determineWinner(playerChoice, aiChoice);
                 updateResult(result);
                 updateScores(result);
-                // Remove highlight after game round
                 document.querySelectorAll(".opimages").forEach(img => img.classList.remove("selected"));
-            }, 100); // 0.5 second delay to show player's choice first
+            }, 100);
         }
 
         function updateAIChoice(aiChoice) {
@@ -92,9 +113,9 @@
             if (result === "win") {
                 resultImg.src = "you-win.png";
             } else if (result === "lose") {
-                resultImg.src = "you-lose.png"; // Ensure this image exists
-            } else {
-                resultImg.src = "tie.png"; // Ensure this image exists
+                resultImg.src = "you-lose.png";
+            } else if (result === "tie") {
+                resultImg.src = "tie.png";
             }
         }
 
@@ -103,46 +124,48 @@
                 humanScore++;
                 document.getElementById("result").style.display = "block";
                 document.getElementById("resultlost").style.display = "none";
+                document.getElementById("draw").style.display = "none";
                 document.querySelector(".manmark").textContent = humanScore;
             } else if (result === "lose") {
                 aiScore++;
                 document.querySelector(".aimark").textContent = aiScore;
                 document.getElementById("resultlost").style.display = "block";
                 document.getElementById("result").style.display = "none";
+                document.getElementById("draw").style.display = "none";
+
             }
-            else{
+            else if (result === "tie"){
                 document.getElementById("resultlost").style.display = "none";
                 document.getElementById("result").style.display = "none";
+                document.getElementById("draw").style.display = "block";
+
             }
             if (humanScore >= 10 || aiScore >= 10) {
                 const winnerBox = document.getElementById("winner-box");
                 const winnerText = document.getElementById("winner-text");
                 winnerText.textContent = humanScore >= 10 ? "You Win!" : "AI Wins!";
                 winnerBox.style.display = "block";
-                // Disable game options to prevent further clicks
                 document.querySelectorAll(".opimages").forEach(img => img.style.pointerEvents = "none");
             }
-            // Ties don't increment scores
         }
 
         function selectResetMatch() {
-            // Reset scores
             humanScore = 0;
             aiScore = 0;
+            clickcounts = 0;
             document.querySelector(".manmark").textContent = "0";
             document.querySelector(".aimark").textContent = "0";
-            document.getElementById("hresult").src = "rock.png"; // Reset to default
+            document.getElementById("clickcound").textContent = "0";
+            document.getElementById("hresult").src = "rock.png";
             document.getElementById("airesult").src = "rock.png";
             document.getElementById("result").src = "you-win.png";
             document.getElementById("resultlost").style.display = "none";
             document.getElementById("result").style.display = "none";
             document.querySelectorAll(".opimages").forEach(img => img.classList.remove("selected"));
             
-            // Hide winner box and re-enable game options
             document.getElementById("winner-box").style.display = "none";
             document.querySelectorAll(".opimages").forEach(img => img.style.pointerEvents = "auto");
             
-            // Return to initial interface
             document.getElementById("offdiv").style.display = "none";
             document.getElementById("exlayer").style.display = "none";
             document.getElementById("opbtn").style.display = "flex";

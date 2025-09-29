@@ -155,7 +155,7 @@ button:active {
     letter-spacing: 2px;
     text-shadow: 2px 2px rgb(116, 116, 116);
 }
-
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* gamesection */
 #exlayer{
     display: none;
@@ -186,7 +186,24 @@ button:active {
     display: none;
     justify-content: space-evenly;
 }
-
+#clicountsbox{
+    width: 200px;
+    height: 110px;
+    border-radius: 30px;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.63);
+    background-color: #00000000;
+    border: 1px solid rgba(138, 138, 138, 0.315);
+    position: fixed;
+    top: 40px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+#clickcound{
+    font-size: 50px;
+}
 .option{
     height: 100%;
     width: 100%;
@@ -230,6 +247,19 @@ button:active {
 #reset:hover{
     transform: scale(1.1);
 }
+#rock:active{
+    transform: scale(.9);
+}
+#pepar:active{
+    transform: scale(.9);
+
+}
+#scissor:active{
+    transform: scale(.9);
+} 
+#reset:active{
+    transform: scale(.9);
+} 
 
 .active{
     border-radius: 50%;
@@ -320,14 +350,31 @@ button:active {
 
 }
 #result{
-    width: 400px;
+    width: 600px;
     position: fixed;
     display: none;
 }
 #resultlost{
-    width: 400px;
+    width: 600px;
     position: fixed;
     display: none;
+}
+#draw{
+    width: 600px;
+    position: fixed;
+    display: none;
+}
+.resultdrow{
+    animation: vibrate 0.3s linear;
+    z-index: -5;
+}
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
 }
 /* logo */
 #logo{
@@ -376,4 +423,472 @@ button:active {
 .resetmatch:hover{
     transform: scale(1.1);
     box-shadow: none;
+}
+
+/* ----------------------------------------------------------------------------------- */
+@media screen and (max-width: 1900px) {
+.resultarea{
+    gap: 250px;
+}
+/* bottomarea */
+.scorebox{
+    height: 190px;
+}
+.aiscorre img{
+    width: 170px;
+    margin-right: 4px;
+}
+.aimark{
+    width: 340px;
+    height: 171px;
+    margin-top: 1px;
+    font-size: 130px;
+    padding-left: 60px;
+    padding-top: 11px;
+}
+.hscore img{
+    width: 170px;
+    margin-left: 4px;
+}
+.manmark{
+    width: 340px;
+    height: 171px;
+    margin-top: .5px;
+    font-size: 130px;
+    padding-left: 130px;
+    padding-top: 11px;
+}
+.option{
+    margin-right: 5px;
+    gap: 10px;
+}
+#rock{
+    width: 180px;
+}
+#pepar{
+    width: 180px;
+}
+#scissor{
+    width: 180px;
+} 
+#reset{
+    width: 180px;
+} 
+}
+
+@media screen and (max-width: 1540px) {
+#logo{
+    display: none;
+}
+.resultarea{
+    gap: 250px;
+    padding-bottom: 80px;
+}
+#airesult{
+    width: 420px;
+    height: 420px;
+}
+#hresult{
+    width: 420px;
+    height: 420px;
+}
+#result{
+    width: 550px;
+    position: fixed;
+    display: none;
+}
+#resultlost{
+    width: 550px;
+}
+#draw{
+    width: 500px;
+}
+/* bottomarea */
+.scorebox{
+    height: 280px;
+    width: 93%;
+margin-left: 20px;}
+.aiscorre img{
+    width: 170px;
+    margin-right: 4px;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+}
+.aimark{
+    width: 340px;
+    height: 171px;
+    margin-top: 1px;
+    font-size: 130px;
+    padding-left: 60px;
+    padding-top: 11px;
+    top: 15px;
+}
+.hscore img{
+    width: 170px;
+    margin-left: 4px;
+    position: fixed;
+    top: 15px;
+}
+.manmark{
+    width: 340px;
+    height: 171px;
+    margin-top: .5px;
+    font-size: 130px;
+    padding-left: 130px;
+    padding-top: 11px;
+    top: 15px;
+}
+.option{
+    margin-right: 0px;
+    gap: 20px;
+    position: none;
+}
+#rock{
+    width: 250px;
+}
+#pepar{
+    width: 250px;
+}
+#scissor{
+    width: 250px;
+} 
+#reset{
+    width: 250px;
+} 
+#offdiv{
+    height: 96%;
+    width: 97%;
+    margin-left: 20px;
+}
+}
+@media screen and (max-width: 1100px) {
+    #logo{
+    left: 41%;
+}
+.resultarea{
+    flex-direction: column-reverse;
+    gap: 160px;
+    padding-bottom: 30px;
+}
+#airesult{
+    width: 330px;
+    height: 330px;
+}
+#hresult{
+    width: 330px;
+    height: 330px;
+}
+#result{
+    width: 500px;
+    position: fixed;
+    display: none;
+}
+#resultlost{
+    width: 500px;
+}
+#draw{
+    width: 500px;
+}
+/* bottomarea */
+.scorebox{
+    height: 180px;
+    width: 93%;
+    margin-left: 20px;
+}
+.aiscorre img{
+    width: 120px;
+    margin-right: 4px;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+}
+.aimark{
+    width: 220px;
+    height: 120px;
+    margin-top: 0px;
+    font-size: 90px;
+    padding-left: 40px;
+    padding-top: 13px;
+    top: 15px;
+}
+.hscore img{
+    width: 120px;
+    margin-left: -10px;
+    position: fixed;
+    top: 15px;
+}
+.manmark{
+    width: 220px;
+    height: 120px;
+    margin-top: 0px;
+    font-size: 80px;
+    padding-left: 90px;
+    padding-top: 13px;
+    top: 15px;
+}
+.option{
+    margin-right: 0px;
+    gap: 20px;
+    position: none;
+}
+#rock{
+    width: 160px;
+}
+#pepar{
+    width: 160px;
+}
+#scissor{
+    width: 160px;
+} 
+#reset{
+    width: 160px;
+} 
+#offdiv{
+    height: 96%;
+    width: 97%;
+    margin-left: 10px;
+    border-radius: 90px;
+}
+#winner-box {
+    width: 80%;
+    height: 350px;
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 200px 200px rgba(0, 0, 0, 0.575);
+}
+#winner-box .resetmatch {
+    margin-top: 20px;
+    font-size: 54px;
+    padding: 10px 20px;
+    width: 250px;
+    margin-left: 250px;
+}
+}
+@media screen and (max-width: 800px) {
+    #logo{
+    left: 37%;
+}
+.resultarea{
+    flex-direction: column-reverse;
+    gap: 120px;
+    padding-top: 0px;
+}
+#airesult{
+    width: 350px;
+    height: 350px;
+}
+#hresult{
+    width: 350px;
+    height: 350px;
+}
+#result{
+    width: 500px;
+    position: fixed;
+    display: none;
+}
+#resultlost{
+    width: 500px;
+}
+#draw{
+    width: 500px;
+}
+/* bottomarea */
+.scorebox{
+    height: 130px;
+    width: 93%;
+    margin-left: 0px;
+}
+
+.aiscorre img{
+    width: 100px;
+    margin-right: 4px;
+    position: fixed;
+    top: 10px;
+    right: 5px;
+}
+.aimark{
+    width: 100px;
+    height: 180px;
+    margin-top: 0px;
+    font-size: 70px;
+    padding-left: 27px;
+    padding-top: 90px;
+    top: 10px;
+    right: 10px;
+
+}
+.hscore img{
+    width: 100px;
+    margin-left: -10px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+}
+.manmark{
+    width: 100px;
+    height: 180px;
+    margin-top: 0px;
+    font-size: 70px;
+    padding-left: 1px;
+    padding-top: 90px;
+    top: 10px;
+    left: 10px;}
+.option{
+    margin-right: 0px;
+    gap: 10px;
+    position: none;
+}
+#rock{
+    width: 110px;
+}
+#pepar{
+    width: 110px;
+}
+#scissor{
+    width: 110px;
+} 
+#reset{
+    width: 110px;
+} 
+#offdiv{
+    height: 96%;
+    width: 97%;
+    margin-left: 10px;
+    border-radius: 63px;
+}
+#winner-box {
+    width: 80%;
+    height: 350px;
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 200px 200px rgba(0, 0, 0, 0.575);
+}
+#winner-box .resetmatch {
+    margin-top: 20px;
+    font-size: 54px;
+    padding: 10px 20px;
+    width: 250px;
+    margin-left: 100px;
+    position: none;
+}
+}
+@media screen and (max-width: 550px){
+    #himage{
+    width: 70%;
+}
+
+    /* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+      #logo{
+    display: none;
+}
+#clicountsbox{
+    width: 120px;
+    height: 100px;
+    font-size: 18px;
+}
+.resultarea{
+    flex-direction: column-reverse;
+    gap: 100px;
+    padding-top: 0px;
+}
+#airesult{
+    width: 290px;
+    height: 290px;
+}
+#hresult{
+    width: 290px;
+    height: 290px;
+}
+#result{
+    width: 300px;
+    position: fixed;
+    display: none;
+}
+#resultlost{
+    width: 300px;
+}
+#draw{
+    width: 300px;
+}
+/* bottomarea */
+.scorebox{
+    height: 80px;
+    width: 93%;
+    margin-left: -8px;
+}
+
+.aiscorre img{
+    width: 100px;
+    margin-right: 4px;
+    position: fixed;
+    top: 10px;
+    right: 5px;
+}
+.aimark{
+    width: 100px;
+    height: 180px;
+    margin-top: 0px;
+    font-size: 70px;
+    padding-left: 27px;
+    padding-top: 90px;
+    top: 10px;
+    right: 10px;
+
+}
+.hscore img{
+    width: 100px;
+    margin-left: -10px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+}
+.manmark{
+    width: 100px;
+    height: 180px;
+    margin-top: 0px;
+    font-size: 70px;
+    padding-left: 1px;
+    padding-top: 90px;
+    top: 10px;
+    left: 10px;}
+.option{
+    margin-right: 0px;
+    gap: 10px;
+    position: none;
+}
+#rock{
+    width: 70px;
+}
+#pepar{
+    width: 70px;
+}
+#scissor{
+    width: 70px;
+} 
+#reset{
+    width: 70px;
+} 
+#offdiv{
+    height: 96%;
+    width: 97%;
+    margin-left: 5px;
+    border-radius: 63px;
+}
+#winner-box {
+    width: 80%;
+    height: 350px;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 60px;
+    box-shadow: 0px 0px 200px 200px rgba(0, 0, 0, 0.575);
+}
+#winner-box .resetmatch {
+    margin-top: 20px;
+    font-size: 34px;
+    padding: 10px 10px;
+    width: 150px;
+    margin-left: 50px;
+    position: none;
+}
 }

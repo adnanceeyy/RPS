@@ -5,6 +5,7 @@
     <title>RPS</title>
     <link rel="shortcut icon" href="rpslogo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <audio src="BornOfTheSky-chosic.com_.mp3" autoplay loop hidden></audio>
   </head>
 <body>
     <!-- Loading Page -->
@@ -22,9 +23,7 @@
     <!-- loginpage -->
     <div id="firstpage" class="mainpage">
         <div id="exlayer"></div>
-        <!-- audioa -->
-        <!-- <audio id="bg-music" src="bg-audio.mp3" autoplay hidden loop></audio> -->
-        <!-- auduiio -->
+        
         <video autoplay muted loop id="bg-video">
             <source src="bg-video.mp4" type="video/mp4">
         </video>
@@ -86,10 +85,17 @@
     <!-- gamepage -->
     <div id="offdiv">
         <img id="logo" src="rpslogo.png" alt="">
+        <div id="clicountsbox">
+            click Count
+            <div id="clickcound">
+            0
+        </div>
+        </div>
         <!-- resultpotion-->
         <div class="resultarea">
             <img id="hresult" src="rock.png" alt="">
             <img id="result" src="you-win.png" alt="">
+            <img id="draw" src="draw.png" alt="">
             <img id="resultlost" src="you-lost.png" alt="">
             <img id="airesult" src="rock.png" alt="">
         </div>
