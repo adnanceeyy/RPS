@@ -959,19 +959,19 @@ button:active {
     }
 
     #airesult {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
 
     #hresult {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
 
 
 
     #resultlost ,#draw , #result{
-        width: 150px;
+        width: 100px;
     }
 
   
